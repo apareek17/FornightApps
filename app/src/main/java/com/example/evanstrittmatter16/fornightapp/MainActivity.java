@@ -41,14 +41,20 @@ public class MainActivity extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workingSoFar(platform.getText().toString(), username.getText().toString());
+
+                if(platform.getText().toString().equals("") || username.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "Fill in a username or platform", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    getAccountData(platform.getText().toString(), username.getText().toString());
+                }
             }
         });
 
 
     }
 
-    private void workingSoFar(String p, String u) {
+    private void getAccountData(String p, String u) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.fortnitetracker.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -64,21 +70,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ItemResponse> call,
                                    Response<ItemResponse> response) {
-                //  List<ItemResponse> items = response.body().getResults();
-                accountId = response.body().getAccountId();
-                lifeTimeStat = response.body().getLifeTimeStats();
 
-                Log.d("ENQUEUE", "onResponse: " + accountId);
 
-              //  Toast.makeText(MainActivity.this, "test toast" + accountId, Toast.LENGTH_SHORT).show();
+                if(response.body() == (null)) {
 
-                Intent intent = new Intent(MainActivity.this, AccountInfoActivity.class);
+                    Toast.makeText(MainActivity.this, "You didn't enter a valid platform, make sure it's pc,xb1, or psn.", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.body().getAccountId() == (null)){
+                    Toast.makeText(MainActivity.this, "Your Username didn't seem to work, maybe you forgot a capital.", Toast.LENGTH_SHORT).show();
+                }
+                else{
 
-                ArrayList<Stats> stats = new ArrayList<>();
+                    accountId = response.body().getAccountId();
+                    lifeTimeStat = response.body().getLifeTimeStats();
 
-                intent.putExtra(EXTRA_ACCOUNT, accountId);
-                intent.putParcelableArrayListExtra(EXTRA_STATS, lifeTimeStat);
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, AccountInfoActivity.class);
+
+                    ArrayList<Stats> stats = new ArrayList<>();
+
+                    intent.putExtra(EXTRA_ACCOUNT, accountId);
+                    intent.putParcelableArrayListExtra(EXTRA_STATS, lifeTimeStat);
+                    startActivity(intent);
+                }
+
+
+
+                // Log.d("ENQUEUE", "onResponse: " + accountId);
+
+                //  Toast.makeText(MainActivity.this, "test toast" + accountId, Toast.LENGTH_SHORT).show();
             }
 
             @Override

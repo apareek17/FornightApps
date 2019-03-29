@@ -4,13 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#20356e"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="432dp"
+        android:layout_height="434dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fornightlogo" />
 
     <Button
         android:id="@+id/button_main_check"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="68dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Check"
@@ -21,13 +33,15 @@
     <EditText
         android:id="@+id/edittext_main_platform"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Platform"
         android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/edittext_main_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -36,13 +50,15 @@
     <EditText
         android:id="@+id/edittext_main_username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_marginBottom="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/button_main_check"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -50,13 +66,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="For Platform Enter: pc, xb1, or psn"
+        android:text="For platform enter pc if you play on computer, xbl if you play on xbox, or psn if you play on the ps4"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_main_platform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

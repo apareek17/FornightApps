@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 public class Stats implements Parcelable {
     private String key;
-    private String Value;
+    private String value;
 
 
     public Stats() { }
@@ -20,16 +20,16 @@ public class Stats implements Parcelable {
     }
 
     public String getValue() {
-        return Value;
+        return value;
     }
 
     public void setValue(String value) {
-        Value = value;
+        value = value;
     }
 
     protected Stats(Parcel in) {
         key = in.readString();
-        Value = in.readString();
+        value = in.readString();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Stats implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(key);
-        dest.writeString(Value);
+        dest.writeString(value);
     }
 
     @SuppressWarnings("unused")

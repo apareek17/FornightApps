@@ -1,5 +1,7 @@
 package com.example.evanstrittmatter16.fornightapp;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -15,6 +17,6 @@ public interface FornightService {
 
     @Headers("TRN-Api-Key: 4c503120-d709-4743-b15e-4d6c00a167dd")
     @GET("store")
-    public Call<Store> getStore();
+    public Call<List<Store>> getStore();
 }
 
